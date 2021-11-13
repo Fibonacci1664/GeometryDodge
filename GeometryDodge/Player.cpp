@@ -26,3 +26,8 @@ void Player::render()
 {
 
 }
+
+void Player::move()
+{
+
+}

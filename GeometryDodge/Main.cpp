@@ -5,11 +5,14 @@
 
 //void testApp();
 
+const int WINDOW_WIDTH = 1280;
+const int WINDOW_HEIGHT = 720;
+
 int main()
 {
     //testApp();
 
-    Application app;
+    Application app(WINDOW_WIDTH, WINDOW_HEIGHT);
     app.run();
 
 	return 0;
