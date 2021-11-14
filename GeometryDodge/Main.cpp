@@ -3,38 +3,13 @@
 #include <SFML/Network.hpp>
 #include "Application.h"
 
-//void testApp();
-
 const int WINDOW_WIDTH = 1280;
 const int WINDOW_HEIGHT = 720;
 
 int main()
 {
-    //testApp();
-
     Application app(WINDOW_WIDTH, WINDOW_HEIGHT);
     app.run();
 
 	return 0;
 }
-
-//void testApp()
-//{
-//    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-//    sf::CircleShape shape(100.f);
-//    shape.setFillColor(sf::Color::Green);
-//
-//    while (window.isOpen())
-//    {
-//        sf::Event event;
-//        while (window.pollEvent(event))
-//        {
-//            if (event.type == sf::Event::Closed)
-//                window.close();
-//        }
-//
-//        window.clear();
-//        window.draw(shape);
-//        window.display();
-//    }
-//}

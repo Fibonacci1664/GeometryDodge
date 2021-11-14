@@ -28,7 +28,7 @@ void Application::initWindow()
     // NEVER have both vSync AND framerate limit, it's either or, NEVER both!
     // If you find vSync is having no effect, check graphics driver's settings and change vSync from "off" to "controlled by application"
     //window.setVerticalSyncEnabled(true);    // Ensure the application runs at the same frequency as the monitor's refresh rate
-    window.setFramerateLimit(60);           // Request a fixed framerate, diffrent OS may output slightly different FPS
+    //window.setFramerateLimit(60);           // Request a fixed framerate, diffrent OS may output slightly different FPS
 
     // Get the native screen res
     int nativeScreenWidth = sf::VideoMode::getDesktopMode().width;
@@ -45,11 +45,22 @@ void Application::run()
     // Run the program as long as the window is open
     while (window.isOpen())
     {
+        level = new Level(&window, &input, &gameState);
+
+        // Initialise objects for delta time
+        sf::Clock clock;
+        float deltaTime;
+
         // If the game isn't over, keep processing stuff
         while (gameState.getCurrentState() != State::GAMEOVER)
         {
             processWindowEvents();
-            runGameLoop();
+            
+            // Calculate delta time. How much time has passed 
+            // since it was last calculated (in seconds) and restart the clock.
+            deltaTime = clock.restart().asSeconds();
+
+            runGameLoop(level, deltaTime);
         }
 
         // Destroy all old game objects, except gameState
@@ -140,18 +151,8 @@ void Application::processWindowEvents()//, Input* in)
     }
 }
 
-void Application::runGameLoop()
+void Application::runGameLoop(Level* level, float deltaTime)
 {
-    level = new Level(&window, &input, &gameState);
-
-    // Initialise objects for delta time
-    sf::Clock clock;
-    float deltaTime;
-
-    // Calculate delta time. How much time has passed 
-    // since it was last calculated (in seconds) and restart the clock.
-    deltaTime = clock.restart().asSeconds();
-
     switch (gameState.getCurrentState())
     {
         //case(State::MENU):

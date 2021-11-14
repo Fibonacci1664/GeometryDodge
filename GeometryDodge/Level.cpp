@@ -2,7 +2,7 @@
 
 Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs) : Screen(hwnd, in, gs)
 {
-	initPlayer();
+	initLevel();
 }
 
 Level::~Level()
@@ -12,6 +12,23 @@ Level::~Level()
 		delete player1;
 		player1 = nullptr;
 	}
+
+	if (ui)
+	{
+		delete ui;
+		ui = nullptr;
+	}
+}
+
+void Level::initLevel()
+{
+	initUI();
+	initPlayer();
+}
+
+void Level::initUI()
+{
+	ui = new UI;
 }
 
 void Level::initPlayer()
@@ -26,6 +43,7 @@ void Level::handleInput(float dt)
 
 void Level::update(float dt)
 {
+	ui->update(dt);
 	player1->update(dt);
 }
 
@@ -35,6 +53,8 @@ void Level::render()
 
 	// Render stuff here
 	window->draw(*player1->getPlayerSprite());
+	window->draw(*ui->getWaveText());
+	window->draw(*ui->getCountdownText());
 
 	endDraw();
 }

@@ -15,7 +15,7 @@ public:
 private:
 	void initWindow();
 	void processWindowEvents();
-	void runGameLoop();
+	void runGameLoop(Level* level, float deltaTime);
 
 	sf::RenderWindow window;
 	Input input;

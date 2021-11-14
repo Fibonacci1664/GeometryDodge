@@ -2,6 +2,7 @@
 #include "GameState.h"
 #include "Screen.h"
 #include "Player.h"
+#include "UI.h"
 
 class Level : public Screen
 {
@@ -15,10 +16,13 @@ public:
 	void render() override;
 
 private:
+	void initUI();
+	void initLevel();
 	void initPlayer();
 	void beginDraw();
 	void endDraw();
 
+	UI* ui;
 	Player* player1;
 	//Player player2;
 };

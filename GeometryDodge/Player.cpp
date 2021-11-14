@@ -31,7 +31,7 @@ void Player::initPlayer()
 	spriteTexture.setSmooth(true);
 	playerSprite.setTexture(spriteTexture);
 	playerSprite.setOrigin(getTextureRect().width * 0.5f, getTextureRect().height * 0.5f);
-	playerSprite.setPosition(sf::Vector2f(50.0f, 50.0f));
+	playerSprite.setPosition(sf::Vector2f(200.0f, 200.0f));
 	playerSprite.setScale(2.0f, 2.0f);
 }
 
