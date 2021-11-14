@@ -17,6 +17,7 @@ public:
 	void render() override;
 
 private:
+	void initDebugMode();
 	void initBackground();
 	void initUI();
 	void initLevel();
@@ -24,6 +25,8 @@ private:
 	void initAsteroids();
 	void spawnNewAsteroid();
 	void checkCurrentWave();
+	void checkCollisions();
+	void createNewAsteroidColBox();
 	void beginDraw();
 	void endDraw();
 	void loadTexture();
@@ -34,5 +37,10 @@ private:
 	std::vector<Asteroid*> asteroids;
 	sf::Texture bgTexture;
 	sf::Sprite bgSprite;
+	sf::RectangleShape playerColBox;
+	std::vector<sf::RectangleShape> asteroidColBoxes;
+
+
 	int currentWave;
+	bool isDebugMode;
 };

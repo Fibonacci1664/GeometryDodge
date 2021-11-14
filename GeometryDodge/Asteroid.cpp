@@ -20,8 +20,9 @@ Asteroid::~Asteroid()
 
 void Asteroid::update(float dt)
 {
-	checkScreenBounds();
 	move();
+	collisionBox = sf::FloatRect(asteroidSprite.getPosition().x - size.x * 0.5f, asteroidSprite.getPosition().y - size.y * 0.5f, size.x, size.y);
+	checkScreenBounds();
 }
 
 void Asteroid::initAsteroid()
@@ -34,6 +35,7 @@ void Asteroid::initAsteroid()
 	asteroidSprite.setPosition(sf::Vector2f(randXPos, randYPos));
 	//asteroidSprite.setScale(0.75f, 0.75f);
 	velocity = sf::Vector2f(2.5f, 2.5f);
+	collisionBox = sf::FloatRect(asteroidSprite.getPosition().x - size.x * 0.5f, asteroidSprite.getPosition().y - size.y * 0.5f, size.x, size.y);
 }
 
 void Asteroid::loadTexture()
@@ -71,4 +73,14 @@ void Asteroid::move()
 sf::Sprite* Asteroid::getAsteroidSprite()
 {
 	return &asteroidSprite;
+}
+
+sf::FloatRect Asteroid::getCollisionBox()
+{
+	return collisionBox;
+}
+
+void Asteroid::setCollisionBox(float x, float y, float width, float height)
+{
+	collisionBox = sf::FloatRect(x, y, width, height);
 }

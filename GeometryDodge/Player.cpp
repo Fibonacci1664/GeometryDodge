@@ -25,6 +25,7 @@ void Player::update(float dt)
 {
 	// update player
 	playerSprite.move(input->getLeftStick() * dt * speed);
+	collisionBox = sf::FloatRect(playerSprite.getPosition().x - size.x * 0.4f, playerSprite.getPosition().y - size.y * 0.4f, size.x * 0.8f, size.y * 0.8f);
 	checkScreenBounds();
 }
 
@@ -38,6 +39,7 @@ void Player::initPlayer()
 	//playerSprite.setOrigin(getTextureRect().width * 0.5f, getTextureRect().height * 0.5f);
 	playerSprite.setPosition(sf::Vector2f(200.0f, 200.0f));
 	playerSprite.setScale(0.75f, 0.75f);
+	collisionBox = sf::FloatRect(playerSprite.getPosition().x - size.x * 0.4f, playerSprite.getPosition().y - size.y * 0.4f, size.x * 0.8f, size.y * 0.8f);
 }
 
 void Player::loadTexture()
@@ -78,4 +80,19 @@ void Player::checkScreenBounds()
 sf::Sprite* Player::getPlayerSprite()
 {
 	return &playerSprite;
+}
+
+sf::Vector2u* Player::getPlayerSize()
+{
+	return &size;
+}
+
+sf::FloatRect Player::getCollisionBox()
+{
+	return collisionBox;
+}
+
+void Player::setCollisionBox(float x, float y, float width, float height)
+{
+	collisionBox = sf::FloatRect(x, y, width, height);
 }

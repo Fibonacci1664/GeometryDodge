@@ -64,6 +64,7 @@ void Application::run()
         }
 
         // Destroy all old game objects, except gameState
+        break;
 
         // Set game back to main menu
         //gameState->setCurrentState(State::MENU);
@@ -132,6 +133,14 @@ void Application::processWindowEvents()//, Input* in)
                 // Need an input class that handles input
             }
             case sf::Event::JoystickButtonReleased:
+            {
+                // Need an input class that handles input
+            }
+            case sf::Event::KeyPressed:
+            {
+                // Need an input class that handles input
+            }
+            case sf::Event::KeyReleased:
             {
                 // Need an input class that handles input
             }
