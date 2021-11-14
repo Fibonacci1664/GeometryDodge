@@ -16,14 +16,18 @@ public:
 	void render() override;
 
 private:
+	void initBackground();
 	void initUI();
 	void initLevel();
 	void initPlayer();
 	void beginDraw();
 	void endDraw();
+	void loadTexture();
 
 	UI* ui;
 	Player* player1;
 	//Player player2;
+	sf::Texture bgTexture;
+	sf::Sprite bgSprite;
 };
 

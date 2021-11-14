@@ -22,8 +22,19 @@ Level::~Level()
 
 void Level::initLevel()
 {
+	initBackground();
 	initUI();
 	initPlayer();
+}
+
+void Level::initBackground()
+{
+	loadTexture();
+	bgTexture.setSmooth(true);
+	bgSprite.setTexture(bgTexture);
+	//bgSprite.setOrigin(bgSprite.getTextureRect().width * 0.5f, bgSprite.getTextureRect().height * 0.5f);
+	////bgSprite.setPosition(sf::Vector2f(0.0f, 0.0f));
+	bgSprite.setScale(5.0f, 2.8125f);
 }
 
 void Level::initUI()
@@ -53,10 +64,11 @@ void Level::render()
 	beginDraw();
 
 	// Render stuff here
-	window->draw(*player1->getPlayerSprite());
+	window->draw(bgSprite);
 	window->draw(*ui->getWaveText());
 	window->draw(*ui->getCountdownText());
-
+	window->draw(*player1->getPlayerSprite());
+	
 	endDraw();
 }
 
@@ -68,4 +80,12 @@ void Level::beginDraw()
 void Level::endDraw()
 {
 	window->display();
+}
+
+void Level::loadTexture()
+{
+	if (!bgTexture.loadFromFile("res/gfx/bg/blue.png"))
+	{
+		std::cout << "Error loading background texture.\n";
+	}
 }

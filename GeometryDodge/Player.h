@@ -21,7 +21,7 @@ private:
 	void move();
 
 	Input* input;
-	sf::Texture spriteTexture;
+	sf::Texture playerTexture;
 	sf::Sprite playerSprite;
 	sf::Vector2f position;
 	sf::Vector2f velocity;

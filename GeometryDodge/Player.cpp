@@ -31,16 +31,16 @@ void Player::update(float dt)
 void Player::initPlayer()
 {
 	loadTexture();
-	spriteTexture.setSmooth(true);
-	playerSprite.setTexture(spriteTexture);
+	playerTexture.setSmooth(true);
+	playerSprite.setTexture(playerTexture);
 	playerSprite.setOrigin(getTextureRect().width * 0.5f, getTextureRect().height * 0.5f);
 	playerSprite.setPosition(sf::Vector2f(200.0f, 200.0f));
-	playerSprite.setScale(2.0f, 2.0f);
+	//playerSprite.setScale(2.0f, 2.0f);
 }
 
 void Player::loadTexture()
 {
-	if (!spriteTexture.loadFromFile("res/gfx/ships/ship_" + std::to_string(playerNum) + ".png"))
+	if (!playerTexture.loadFromFile("res/gfx/ships/altShip_" + std::to_string(playerNum) + ".png"))
 	{
 		std::cout << "Error loading ship texture " << playerNum << '\n';
 	}

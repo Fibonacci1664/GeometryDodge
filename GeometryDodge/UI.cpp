@@ -40,7 +40,7 @@ void UI::initUI()
 
 void UI::loadFont()
 {
-	if (!font.loadFromFile("res/fonts/Montserrat-Regular.ttf"))
+	if (!font.loadFromFile("res/fonts/kenvector_future_thin.ttf"))
 	{
 		std::cout << "Error loading font\n";
 	}
