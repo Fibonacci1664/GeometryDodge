@@ -24,11 +24,11 @@ Application::~Application()
 
 void Application::initWindow()
 {
-	window.create(sf::VideoMode(windowWidth, windowHeight), "Geometry Dodge!");
+	window.create(sf::VideoMode(windowWidth, windowHeight), "Asteroid Dodge!");
     // NEVER have both vSync AND framerate limit, it's either or, NEVER both!
     // If you find vSync is having no effect, check graphics driver's settings and change vSync from "off" to "controlled by application"
     //window.setVerticalSyncEnabled(true);    // Ensure the application runs at the same frequency as the monitor's refresh rate
-    //window.setFramerateLimit(60);           // Request a fixed framerate, diffrent OS may output slightly different FPS
+    window.setFramerateLimit(60);           // Request a fixed framerate, diffrent OS may output slightly different FPS
 
     // Get the native screen res
     int nativeScreenWidth = sf::VideoMode::getDesktopMode().width;
@@ -75,7 +75,7 @@ void Application::processWindowEvents()//, Input* in)
     // Check all the window's events that were triggered since the last iteration of the loop
     sf::Event event;
     unsigned int n_buts = 0;
-    window.setJoystickThreshold(2.0f);
+    //window.setJoystickThreshold(2.0f);        // This doesn't do anything, threshold is controlled in Input class
 
     while (window.pollEvent(event))
     {

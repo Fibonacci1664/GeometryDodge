@@ -77,3 +77,8 @@ sf::Text* UI::getCountdownText()
 {
 	return &countdownText;
 }
+
+int UI::getWaveCount()
+{
+	return waveCount;
+}

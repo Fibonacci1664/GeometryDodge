@@ -8,6 +8,8 @@ const int WINDOW_HEIGHT = 720;
 
 int main()
 {
+    std::srand(std::time(nullptr));
+
     Application app(WINDOW_WIDTH, WINDOW_HEIGHT);
     app.run();
 

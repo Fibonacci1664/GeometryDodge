@@ -11,6 +11,7 @@ public:
 	void update(float dt);
 	sf::Text* getWaveText();
 	sf::Text* getCountdownText();
+	int getWaveCount();
 
 private:
 	void initUI();
