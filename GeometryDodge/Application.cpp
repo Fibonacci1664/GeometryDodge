@@ -75,6 +75,7 @@ void Application::processWindowEvents()//, Input* in)
     // Check all the window's events that were triggered since the last iteration of the loop
     sf::Event event;
     unsigned int n_buts = 0;
+    window.setJoystickThreshold(2.0f);
 
     while (window.pollEvent(event))
     {
@@ -120,6 +121,11 @@ void Application::processWindowEvents()//, Input* in)
             {
                 std::cout << "Controller is disconnected!.\n";
                 break;
+            }
+            case sf::Event::JoystickMoved:
+            {
+                // Need an input class that handles input
+                input.setLeftStick(sf::Joystick::getAxisPosition(0, sf::Joystick::X), sf::Joystick::getAxisPosition(0, sf::Joystick::Y));
             }
             case sf::Event::JoystickButtonPressed:
             {

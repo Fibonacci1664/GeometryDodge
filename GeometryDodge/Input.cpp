@@ -67,6 +67,42 @@ bool Input::isButtonDown(int button)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+void Input::setLeftStick(float xAxis, float yAxis)
+{
+	// This was implemented to take care of controller drift and the fact
+	// that the built in function window.setJoystickThreshold(n) doesn't
+	// seem to do anything. Drift for my controller was still occurring
+	// at 3.0f, and had stopped at 4.0f, but has been set to 6.0f just to be safe
+	float threshold = 6.0f;
+
+	if (abs(xAxis) < threshold)
+	{
+		leftStickPos.x = 0.0f;
+	}
+	else
+	{
+		leftStickPos.x = xAxis;
+	}
+
+	if (abs(yAxis) < threshold)
+	{
+		leftStickPos.y = 0.0f;
+	}
+	else
+	{
+		leftStickPos.y = yAxis;
+	}
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+sf::Vector2f Input::getLeftStick()
+{
+	return leftStickPos;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 void Input::setMouseX(int lx)
 {
 	mouse.x = lx;

@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "Input.h"
 
 class Player : sf::Sprite
 {
@@ -11,6 +12,7 @@ public:
 	void handleInput(float dt);
 	void update(float dt);
 	sf::Sprite* getPlayerSprite();
+	void setInput(Input* in) { input = in; };
 
 private:
 	void initPlayer();
@@ -18,6 +20,7 @@ private:
 	
 	void move();
 
+	Input* input;
 	sf::Texture spriteTexture;
 	sf::Sprite playerSprite;
 	sf::Vector2f position;

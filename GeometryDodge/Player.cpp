@@ -5,7 +5,8 @@ Player::Player(int playerNum) : playerNum(playerNum)
 {
 	position = sf::Vector2f(0.0f, 0.0f);
 	velocity = sf::Vector2f(0.0f, 0.0f);
-	speed = 0.0f;
+	speed = 7.0f;
+	input = nullptr;
 
 	initPlayer();
 }
@@ -18,11 +19,13 @@ Player::~Player()
 void Player::handleInput(float dt)
 {
 	// Handle player input
+	
 }
 
 void Player::update(float dt)
 {
 	// update player
+	playerSprite.move(input->getLeftStick() * dt * speed);
 }
 
 void Player::initPlayer()

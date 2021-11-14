@@ -34,6 +34,7 @@ void Level::initUI()
 void Level::initPlayer()
 {
 	player1 = new Player(1);
+	player1->setInput(input);
 }
 
 void Level::handleInput(float dt)

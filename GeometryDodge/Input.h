@@ -1,6 +1,7 @@
 #pragma once
 
 #include<iostream>
+#include <SFML/System/Vector2.hpp>
 
 class Input
 {
@@ -21,6 +22,10 @@ public:
 	void setButtonUp(int button);
 	bool isButtonDown(int button);
 
+	// Functions for setting joystick positions
+	void setLeftStick(float xAxis, float yAxis);
+	sf::Vector2f getLeftStick();
+
 	// Functions are mouse input, including getting and setting current position and mouse button presses.
 	void setMouseX(int lx);
 	void setMouseY(int ly);
@@ -35,6 +40,7 @@ public:
 private:
 	// Array of booleans representing buttons (pressed = true, released = false).
 	bool buttons[32]{ false };
+	sf::Vector2f leftStickPos;
 
 	// Mouse variable.
 	Mouse mouse;
