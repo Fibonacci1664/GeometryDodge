@@ -1,21 +1,28 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-class Player
+class Player : sf::Sprite
 {
 public:
-	Player();
+	Player() {}
+	Player(int playerNum);
 	~Player();
 
 	void handleInput(float dt);
 	void update(float dt);
-	void render();
+	sf::Sprite* getPlayerSprite();
 
 private:
+	void initPlayer();
+	void loadTexture();
+	
 	void move();
 
+	sf::Texture spriteTexture;
+	sf::Sprite playerSprite;
 	sf::Vector2f position;
 	sf::Vector2f velocity;
+	int playerNum;
 	float speed;
 };
 

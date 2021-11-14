@@ -40,7 +40,7 @@ void Application::initWindow()
 
 void Application::run()
 {
-    gameState.setCurrentState(State::MENU);
+    gameState.setCurrentState(State::LEVEL);
 
     // Run the program as long as the window is open
     while (window.isOpen())
@@ -154,20 +154,20 @@ void Application::runGameLoop()
 
     switch (gameState.getCurrentState())
     {
-        case(State::MENU):
-        {
-            /*menu->handleInput(deltaTime);
-            menu->update(deltaTime);
-            menu->render();
-            break;*/
-        }
-        case(State::HOW_TO_PLAY):
-        {
-            /*howToPlay->handleInput(deltaTime);
-            howToPlay->update(deltaTime);
-            howToPlay->render();
-            break;*/
-        }
+        //case(State::MENU):
+        //{
+        //    menu->handleInput(deltaTime);
+        //    menu->update(deltaTime);
+        //    menu->render();
+        //    break;
+        //}
+        //case(State::HOW_TO_PLAY):
+        //{
+        //    /*howToPlay->handleInput(deltaTime);
+        //    howToPlay->update(deltaTime);
+        //    howToPlay->render();
+        //    break;*/
+        //}
         case(State::LEVEL):
         {
             level->handleInput(deltaTime);
@@ -177,7 +177,6 @@ void Application::runGameLoop()
         }
         case(State::GAMEOVER):
         {
-            gameState.setCurrentState(State::GAMEOVER);
             break;
         }
         case(State::PAUSE):

@@ -1,11 +1,12 @@
 #pragma once
 #include "GameState.h"
 #include "Screen.h"
+#include "Player.h"
 
 class Level : public Screen
 {
 public:
-	Level();
+	Level() {}
 	Level(sf::RenderWindow* hwnd, Input* in, GameState* gs);
 	~Level();
 
@@ -14,8 +15,11 @@ public:
 	void render() override;
 
 private:
-
+	void initPlayer();
 	void beginDraw();
 	void endDraw();
+
+	Player* player1;
+	//Player player2;
 };
 
