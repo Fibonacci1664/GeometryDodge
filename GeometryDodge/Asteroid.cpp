@@ -25,6 +25,11 @@ void Asteroid::update(float dt)
 	checkScreenBounds();
 }
 
+void Asteroid::render(sf::RenderWindow* window)
+{
+	window->draw(asteroidSprite);
+}
+
 void Asteroid::initAsteroid()
 {
 	loadTexture();

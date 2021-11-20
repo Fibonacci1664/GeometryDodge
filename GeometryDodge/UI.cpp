@@ -68,6 +68,12 @@ void UI::update(float dt)
 	countdownText.setString("TIME: " + std::to_string(timer));
 }
 
+void UI::render(sf::RenderWindow* window)
+{
+	window->draw(waveText);
+	window->draw(countdownText);
+}
+
 sf::Text* UI::getWaveText()
 {
 	return &waveText;

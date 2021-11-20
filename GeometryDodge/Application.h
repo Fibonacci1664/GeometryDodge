@@ -3,6 +3,7 @@
 #include <SFML/Window.hpp>
 #include "GameState.h"
 #include "Level.h"
+#include "NetworkSimulator.h"
 
 class Application
 {
@@ -14,8 +15,8 @@ public:
 
 private:
 	void initWindow();
-	void processWindowEvents();
-	void runGameLoop(Level* level, float deltaTime);
+	void processWindowEvents(NetworkSimulator* netSim, float& nextPrint, float& startTime);
+	void switchGameState(Level* level, float deltaTime);
 
 	sf::RenderWindow window;
 	Input input;

@@ -73,7 +73,7 @@ void Input::setLeftStick(float xAxis, float yAxis)
 	// that the built in function window.setJoystickThreshold(n) doesn't
 	// seem to do anything. Drift for my controller was still occurring
 	// at 3.0f, and had stopped at 4.0f, but has been set to 6.0f just to be safe
-	float threshold = 6.0f;
+	float threshold = 20.0f;
 
 	if (abs(xAxis) < threshold)
 	{

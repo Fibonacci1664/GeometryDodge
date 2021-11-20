@@ -8,6 +8,7 @@ public:
 	~Asteroid();
 
 	void update(float dt);
+	void render(sf::RenderWindow* window);
 	sf::Sprite* getAsteroidSprite();
 	sf::FloatRect getCollisionBox();
 	void setCollisionBox(float x, float y, float width, float height);

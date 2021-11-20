@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "UI.h"
 #include "Asteroid.h"
+#include "NetworkSimulator.h"
 
 class Level : public Screen
 {
@@ -13,8 +14,9 @@ public:
 	~Level();
 
 	void handleInput(float dt) override;
-	void update(float dt) override;
+	void update(float dt, NetworkSimulator* netSimulator, float nextPrint, float sendRate) override;
 	void render() override;
+	void reset();
 
 private:
 	void initDebugMode();
@@ -39,7 +41,6 @@ private:
 	sf::Sprite bgSprite;
 	sf::RectangleShape playerColBox;
 	std::vector<sf::RectangleShape> asteroidColBoxes;
-
 
 	int currentWave;
 	bool isDebugMode;
