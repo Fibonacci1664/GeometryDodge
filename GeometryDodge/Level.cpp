@@ -76,7 +76,7 @@ void Level::initBackground()
 	bgTexture.setSmooth(true);
 	bgSprite.setTexture(bgTexture);
 	//bgSprite.setOrigin(bgSprite.getTextureRect().width * 0.5f, bgSprite.getTextureRect().height * 0.5f);
-	//bgSprite.setPosition(sf::Vector2f(0.0f, 0.0f));
+	////bgSprite.setPosition(sf::Vector2f(0.0f, 0.0f));
 	bgSprite.setScale(5.0f, 2.8125f);
 }
 
@@ -117,36 +117,11 @@ void Level::handleInput(float dt)
 	player1->handleInput(dt);
 }
 
-void Level::update(float dt, NetworkSimulator* netSimulator, float nextPrint, float sendRate)
+void Level::update(float dt)
 {
-	if (netSimulator->Time() < 120000000.0f)
-	{
-		PlayerDataMsg msg;
-
-		// Update the network simulation
-		netSimulator->Update(dt, player1->getPosition());
-
-		// Get any 'network' messages that are available
-		while (netSimulator->ReceiveMessage(msg))
-		{
-			printf("Received message: ID = %d, Pos = (%.2f, %.2f), Time = %.2f\n", msg.playerID, msg.x, msg.y, msg.timeSent);
-			player1->addMessage(msg);
-		}
-
-		player1->update(dt);	// Update the real position of the player with the info from the latest packet
-		player1->setGhostPosition(player1->runPrediction(netSimulator->Time()), dt);
-
-		//if (netSimulator->Time() > nextPrint)
-		//{
-		//	// Get the predicted position of the player at a specific interval and print it to the console
-		//	sf::Vector2f predictedPosition = player1->runPrediction(nextPrint);
-		//	printf("\tPredicted positiion:  (%.2f, %.2f), Time = %.2f\n", predictedPosition.x, predictedPosition.y, nextPrint);
-		//	nextPrint = nextPrint + (sendRate * 0.25f);	// Print 4 times per packet
-		//}
-	}
-
 	ui->update(dt);
-	
+	player1->update(dt);
+
 	if (isDebugMode)
 	{
 		// Update the players collision box
@@ -176,15 +151,16 @@ void Level::render()
 
 	// Render stuff here
 	window->draw(bgSprite);
-	ui->render(window);
-	
+	window->draw(*ui->getWaveText());
+	window->draw(*ui->getCountdownText());
+
 	// Draw all the asteroids
 	for (int i = 0; i < asteroids.size(); i++)
 	{
-		asteroids[i]->render(window);
+		window->draw(*asteroids[i]->getAsteroidSprite());
 	}
 
-	player1->render(window);
+	window->draw(*player1->getPlayerSprite());
 
 	// Draw all the debug magenta collision boxes
 	if (isDebugMode)
@@ -198,11 +174,6 @@ void Level::render()
 	}
 
 	endDraw();
-}
-
-void Level::reset()
-{
-	player1->reset();
 }
 
 void Level::beginDraw()

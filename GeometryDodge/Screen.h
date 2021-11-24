@@ -14,7 +14,6 @@
 #include <SFML\Graphics\RectangleShape.hpp>
 #include "Input.h"
 #include "GameState.h"
-#include "NetworkSimulator.h"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -26,7 +25,7 @@ public:
 	~Screen();
 
 	virtual void handleInput(float dt);
-	virtual void update(float dt, NetworkSimulator* netSimulator, float nextPrint, float sendRate);
+	virtual void update(float dt);
 	virtual void render();
 
 	virtual State getGameState();
@@ -52,4 +51,3 @@ private:
 
 	void initCursor();
 };
-

@@ -41,7 +41,7 @@ void Screen::handleInput(float dt)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void Screen::update(float dt, NetworkSimulator* netSimulator, float nextPrint, float sendRate)
+void Screen::update(float dt)
 {
 
 }
@@ -78,7 +78,6 @@ void Screen::initCursor()
 	{
 		std::cerr << "Sorry could not load cursor icon!\n";
 	}
-
 	customCursor.setInput(input);
 	customCursor.setWindow(window);
 	customCursor.setTexture(&cursorTexture);
